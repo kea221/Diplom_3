@@ -1,5 +1,6 @@
 import pytest
 import allure
+from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from locators.order_feed_locators import OrderFeedLocators
 
@@ -34,3 +35,13 @@ class OrderFeedPage(BasePage):
     @allure.step("Найти на странице заголовок 'В работе'")
     def check_in_progress_is_visible(self):
         return self.find_element(OrderFeedLocators.IN_PROGRESS)
+
+    @allure.step("Получить локатор для номера заказа в ленте")
+    def get_locator_for_number_of_order_in_feed(self, number_from_history):
+        locator_number_in_feed = (By.XPATH, f"//p[text()='{number_from_history}']")
+        return locator_number_in_feed
+
+    @allure.step("Получить локатор для номера заказа из раздела В работе")
+    def get_locator_for_number_of_order_in_progress(self, number_of_order):
+        locator_number_in_progress = (By.XPATH, f"//ul[2]/li[text()='{number_of_order}']")
+        return locator_number_in_progress

@@ -17,13 +17,14 @@ class TestSitePage:
                                      Urls.FORGOT_PASSWORD_URL])
     def test_go_to_constructor(self, driver, url):
         site_page = SitePage(driver)
-        site_page.go_on_login_page(Urls.BASE_URL)
+        site_page.go_to_site(Urls.BASE_URL)
+        site_page.click_on_account_button()
         login_page = LoginPage(driver)
         login_page.fill_login_form(User.EMAIL, User.PASSWORD)
         site_page.check_order_button_is_visible()
         site_page.go_to_site(url)
         site_page.click_on_constructor()
-        assert driver.current_url == Urls.BASE_URL
+        assert site_page.get_current_url(driver) == Urls.BASE_URL
 
     @allure.title("Проверяем переход на 'Ленту заказов'")
     @pytest.mark.parametrize("url", [Urls.BASE_URL,
@@ -32,18 +33,20 @@ class TestSitePage:
                                      Urls.FORGOT_PASSWORD_URL])
     def test_go_to_order_feed(self, driver, url):
         site_page = SitePage(driver)
-        site_page.go_on_login_page(Urls.BASE_URL)
+        site_page.go_to_site(Urls.BASE_URL)
+        site_page.click_on_account_button()
         login_page = LoginPage(driver)
         login_page.fill_login_form(User.EMAIL, User.PASSWORD)
         site_page.check_order_button_is_visible()
         site_page.go_to_site(url)
         site_page.click_on_order_feed()
-        assert driver.current_url == Urls.ORDER_FEED_URL
+        assert site_page.get_current_url(driver) == Urls.ORDER_FEED_URL
 
     @allure.title("Если кликнуть на ингредиент, появится всплывающее окно с деталями")
     def test_appears_modal_with_details(self, driver):
         site_page = SitePage(driver)
-        site_page.go_on_login_page(Urls.BASE_URL)
+        site_page.go_to_site(Urls.BASE_URL)
+        site_page.click_on_account_button()
         login_page = LoginPage(driver)
         login_page.fill_login_form(User.EMAIL, User.PASSWORD)
         site_page.click_on_crater_bun()
@@ -53,7 +56,8 @@ class TestSitePage:
     @allure.title("Всплывающее окно с деталями закрывается кликом по крестику")
     def test_modal_window_closed_by_click_on_cross(self, driver):
         site_page = SitePage(driver)
-        site_page.go_on_login_page(Urls.BASE_URL)
+        site_page.go_to_site(Urls.BASE_URL)
+        site_page.click_on_account_button()
         login_page = LoginPage(driver)
         login_page.fill_login_form(User.EMAIL, User.PASSWORD)
         site_page.click_on_crater_bun()
@@ -73,11 +77,9 @@ class TestSitePage:
     @allure.title("Залогиненный пользователь может оформить заказ")
     def test_authorized_user_can_place_order(self, driver):
         site_page = SitePage(driver)
-        site_page.go_on_login_page(Urls.BASE_URL)
+        site_page.go_to_site(Urls.BASE_URL)
+        site_page.click_on_account_button()
         login_page = LoginPage(driver)
         login_page.fill_login_form(User.EMAIL, User.PASSWORD)
         site_page.collect_burger()
-        assert WebDriverWait(driver, 3).until(EC.presence_of_element_located(SitePageLocators.ORDER_ID))
-
-
-
+        assert site_page.find_element(SitePageLocators.ORDER_ID)

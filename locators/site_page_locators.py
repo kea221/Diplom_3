@@ -26,5 +26,11 @@ class SitePageLocators:
     # CLOSE_DETAILS - кнопка закрытия модального окна с деталями
     CLOSE_DETAILS = (By.XPATH, "//div[@class='App_App__aOmNj']/section[1]//button")
     # NUMBER_OF_ORDER - номер заказа в модальном окне "Ваш заказ начали готовить"
-    NUMBER_OF_ORDER = (By.XPATH, "//div[@class='App_App__aOmNj']/section[2]//h2")
+    NUMBER_OF_ORDER = (By.XPATH, "//div[@class='App_App__aOmNj']/section[1]//h2")
 
+    # ACCOUNT_BUTTON - кнопка "Личный Кабинет"
+    ACCOUNT_BUTTON = (By.XPATH, "//a[@href='/account']")
+    # CONSTRUCTOR - кнопка "Конструктор"
+    CONSTRUCTOR = (By.XPATH, "//nav//li/a[@href='/']")
+    # ORDER_FEED -кнопка "Лента заказов"
+    ORDER_FEED = (By.XPATH, "//a[@href='/feed']/p")

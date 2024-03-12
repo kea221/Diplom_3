@@ -3,6 +3,7 @@ import allure
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 from locators.order_feed_locators import OrderFeedLocators
+from constants import Order
 
 
 class OrderFeedPage(BasePage):
@@ -38,10 +39,12 @@ class OrderFeedPage(BasePage):
 
     @allure.step("Получить локатор для номера заказа в ленте")
     def get_locator_for_number_of_order_in_feed(self, number_from_history):
-        locator_number_in_feed = (By.XPATH, f"//p[text()='{number_from_history}']")
+        new_xpath = Order.NUMBER_IN_FEED.replace("a", f"{number_from_history}")
+        locator_number_in_feed = (Order.XPATH, new_xpath)
         return locator_number_in_feed
 
     @allure.step("Получить локатор для номера заказа из раздела В работе")
     def get_locator_for_number_of_order_in_progress(self, number_of_order):
-        locator_number_in_progress = (By.XPATH, f"//ul[2]/li[text()='{number_of_order}']")
+        changed_xpath = Order.NUMBER_IN_PROGRESS.replace("a", f"{number_of_order}")
+        locator_number_in_progress = (Order.XPATH, changed_xpath)
         return locator_number_in_progress

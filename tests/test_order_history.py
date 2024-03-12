@@ -21,4 +21,4 @@ class TestOrderHistoryPage:
         account_page = AccountPage(driver)
         account_page.click_on_order_history()
         order_history_page = OrderHistoryPage(driver)
-        assert order_history_page.get_current_url(driver) == Urls.ORDER_HISTORY_URL
+        assert order_history_page.get_current_url() == Urls.ORDER_HISTORY_URL

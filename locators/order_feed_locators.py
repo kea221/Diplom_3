@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from constants import Order
 
 
 class OrderFeedLocators:
@@ -14,3 +15,5 @@ class OrderFeedLocators:
     COUNTER_FOR_TODAY = (By.XPATH, "//p[@class='text text_type_main-medium' and text()='Выполнено за сегодня:']/following-sibling::p")
     # IN_PROGRESS - Заголовок В работе
     IN_PROGRESS = (By.XPATH, "//p[@class='text text_type_main-medium' and text()='В работе:']")
+
+    NUMBER_IN_FEED = (By.XPATH, Order.NUMBER_IN_FEED)

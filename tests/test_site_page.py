@@ -24,7 +24,7 @@ class TestSitePage:
         site_page.check_order_button_is_visible()
         site_page.go_to_site(url)
         site_page.click_on_constructor()
-        assert site_page.get_current_url(driver) == Urls.BASE_URL
+        assert site_page.get_current_url() == Urls.BASE_URL
 
     @allure.title("Проверяем переход на 'Ленту заказов'")
     @pytest.mark.parametrize("url", [Urls.BASE_URL,
@@ -40,7 +40,7 @@ class TestSitePage:
         site_page.check_order_button_is_visible()
         site_page.go_to_site(url)
         site_page.click_on_order_feed()
-        assert site_page.get_current_url(driver) == Urls.ORDER_FEED_URL
+        assert site_page.get_current_url() == Urls.ORDER_FEED_URL
 
     @allure.title("Если кликнуть на ингредиент, появится всплывающее окно с деталями")
     def test_appears_modal_with_details(self, driver):

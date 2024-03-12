@@ -1,3 +1,6 @@
+from selenium.webdriver.common.by import By
+
+
 class Urls:
     BASE_URL = "https://stellarburgers.nomoreparties.site/"
     ACCOUNT_URL = "https://stellarburgers.nomoreparties.site/account/profile"
@@ -12,3 +15,9 @@ class User:
     NAME = "Korben"
     EMAIL = "korbendallas@yandex.ru"
     PASSWORD = "451289"
+
+
+class Order:
+    XPATH = By.XPATH
+    NUMBER_IN_FEED = f"//p[text()='a']"
+    NUMBER_IN_PROGRESS = f"//ul[2]/li[text()='a']"

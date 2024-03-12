@@ -16,4 +16,4 @@ class TestForgotPasswordPage:
         login_page.click_on_recovery_password()
         forgot_password_page = ForgotPasswordPage(driver)
         forgot_password_page.check_button_recovery_is_visible()
-        assert forgot_password_page.get_current_url(driver) == Urls.FORGOT_PASSWORD_URL
+        assert forgot_password_page.get_current_url() == Urls.FORGOT_PASSWORD_URL

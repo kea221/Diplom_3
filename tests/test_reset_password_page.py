@@ -22,7 +22,7 @@ class TestResetPasswordPage:
         forgot_password_page.click_on_recovery_button()
         reset_password_page = ResetPasswordPage(driver)
         reset_password_page.check_button_save_is_visible()
-        assert reset_password_page.get_current_url(driver) == Urls.RESET_PASSWORD_URL
+        assert reset_password_page.get_current_url() == Urls.RESET_PASSWORD_URL
 
     @allure.title("Клик по кнопке показать/скрыть пароль делает поле активным")
     def test_click_on_show_password_makes_field_active(self, driver):

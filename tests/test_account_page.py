@@ -20,7 +20,7 @@ class TestAccountPage:
         site_page.click_on_account_button()
         account_page = AccountPage(driver)
         account_page.check_button_logout_is_visible()
-        assert account_page.get_current_url(driver) == Urls.ACCOUNT_URL
+        assert account_page.get_current_url() == Urls.ACCOUNT_URL
 
     @allure.title("Проверяем выход из ЛК")
     def test_logout(self, driver):
@@ -33,4 +33,4 @@ class TestAccountPage:
         account_page = AccountPage(driver)
         account_page.click_on_logout_button()
         login_page.check_login_button_is_visible()
-        assert login_page.get_current_url(driver) == Urls.LOGIN_URL
+        assert login_page.get_current_url() == Urls.LOGIN_URL

@@ -32,5 +32,5 @@ class BasePage:
         return ActionChains(self.driver).drag_and_drop(drag, drop).perform()
 
     @allure.step("Получить текущий урл")
-    def get_current_url(self, driver):
-        return driver.current_url
+    def get_current_url(self):
+        return self.driver.current_url
